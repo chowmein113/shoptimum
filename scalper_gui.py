@@ -61,7 +61,7 @@ root.configure(bg='#2c2f33')
 
 root.geometry('760x760')
 root.title('Piglatin Translator')
-root.iconbitmap("h:/python/python_repos/python-logo-4k-i6-1920x1080.ico")
+root.iconbitmap("C:\Users\chowm\Desktop\scalper_repo_test")
 
 repeat=True
 ##headlabel__init__()
