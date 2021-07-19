@@ -28,16 +28,34 @@ class website_dataobj():
 class login_info():
     first_name=""
     last_name=""
+class global_variables():
+    global saves
+    global linesperobj
+    g_saves=saves
+    g_linesperobj=linesperobj
+    def __init__(self, save, lines):
+        self.setsaves(save)
+        self.setlinesperobj(lines)
+        
+    def getsaves(self):
+        return self.g_saves
+    def getlinesperobj(self):
+        return self.g_linesperobj
+    def setsaves(self, save):
+        self.saves=save
+    def setlinesperobj(self, lines):
+        self.g_linesperobj=lines
+        
     
 def startup():
     global saves
     saves=open("scalper_website_info", "r+")
-def getsaves():
-    global saves
+    return saves
+def getsaves(saves):
     listobj=saves.readlines()
     return listobj
-def converttoobj(stuff, num_start):
-    global linesperobj
+def converttoobj(stuff, num_start, linesperobj):
+    
     obj=website_dataobj(stuff[num_start], stuff[num_start+1], stuff[num_start+2])
     return obj
     #obj_data_send=[]
