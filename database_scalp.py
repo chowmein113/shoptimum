@@ -25,7 +25,11 @@ class website_dataobj():
         return self.checkoutbutton
     def getwebsite(self):
         return self.website_name
-def main():
+class login_info():
+    first_name=""
+    last_name=""
+    
+def startup():
     global saves
     saves=open("scalper_website_info", "r+")
 def getsaves():
@@ -41,9 +45,10 @@ def converttoobj(stuff, num_start):
         
         obj_data_send.append(stuff[s])"""
 def initconnverttoobj(stuff):
+    global linesperobj
     obj_data_send=[]
     s=0
     while s < len(stuff):
         obj_data_send.append(converttoobj(stuff, s))
-        s+3
+        s+linesperobj
     return obj_data_send
