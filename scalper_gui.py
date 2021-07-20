@@ -75,8 +75,12 @@ try:
 except:
     pass
 
-frame2=Frame(window)
+main_menu=Frame(window)
 frame1=Frame(window)
+#main menu frame 
+main_menu.configure(bg='#2c2f33')
+mainheadlabel=Label(main_menu, text="Monopoly Bot", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
+mainheadlabel.pack()
 
 
 #Frame 1 for website information
@@ -85,7 +89,7 @@ frame1_title=Label(frame1, text="Website Monitor", bg='#7289da')
 frame1.configure(bg='#2c2f33')
 frame1_title.pack()
 
-for frame in (root, frame1, frame2):
+for frame in (root, frame1, main_menu):
     
     frame.grid(row=0, column=0, sticky="nsew")
 #menu
@@ -96,12 +100,13 @@ my_menu.add_cascade(label="View", menu=file_menu)
 file_menu.add_command(label="Website info monitor", command=lambda: show_frame(frame1))
 file_menu.add_separator()
 file_menu.add_command(label="Exit", command=window.quit)
-file_menu.add_command(label="Main", command=lambda: show_frame(root))
+file_menu.add_command(label="Main", command=lambda: show_frame(main_menu))
+file_menu.add_command(label="Add Website", command=lambda: show_frame(root) )
 repeat=True
 
 """root stuff"""
 ##headlabel__init__()
-headlabel=Label(root, text="Monopoly Bot", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
+headlabel=Label(root, text="Add Website", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
 ##headlabel.grid(row=6, column=5)
 headlabel.pack()
 ##text entry init
@@ -124,5 +129,5 @@ buttonframe=Frame(root)
 buttonframe.pack()
 cleartext=Button(buttonframe, text='Clear', command=clear_text, bg='#7289da', fg='#ffffff')
 cleartext.grid(row=7, column=5)
-show_frame(root)
+show_frame(main_menu)
 root.mainloop()
