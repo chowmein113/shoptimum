@@ -77,6 +77,9 @@ except:
 
 main_menu=Frame(window)
 frame1=Frame(window)
+
+
+
 #main menu frame 
 main_menu.configure(bg='#2c2f33')
 mainheadlabel=Label(main_menu, text="Monopoly Bot", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
