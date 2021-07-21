@@ -56,7 +56,39 @@ def clear_text():
     cleartext.grid(row=7, column=5)"""
  #showing frame
 def show_frame(frame):
+    global List_frame
+    global current_frame
+    global past_frame
+    
+        
     frame.tkraise()
+    past_frame=current_frame
+    current_frame=frame
+    
+    """for frame in not List_frame:
+        frame.grid_remove()
+    frame.grid(row=0, column=0, sticky="nsew")"""
+def init_frame():
+    global List_frame
+    for frame in List_frame:
+        
+        frame.grid(row=0, column=0, sticky="nsew")
+def show_side():
+    global side_menu
+    global current_frame
+    global past_frame
+    if current_frame!=side_menu:
+        side_menu.tkraise()
+        past_frame=current_frame
+        current_frame=side_menu
+        
+    else:
+        past_frame.tkraise()
+        current_frame=past_frame
+        past_frame=side_menu
+        
+        
+        
 
         
 
@@ -64,7 +96,12 @@ def show_frame(frame):
 window=Tk()
 root=Frame(window)
 #root.state('zoomed')
+global past_frame
+global current_frame
+current_frame=root
+global side_menu
 root.configure(bg='#2c2f33')
+window.attributes('-fullscreen',False)
 
 window.state('zoomed')
 window.rowconfigure(0, weight=1)
@@ -77,6 +114,16 @@ except:
 
 main_menu=Frame(window)
 frame1=Frame(window)
+global List_frame
+List_frame=[root, frame1, main_menu]
+#side menu
+side_menu=Frame(window)
+side_State=False
+side_menu['bg']='#666666'
+window.bind('<s>', lambda: show_side())
+side_menu_label=Label(side_menu,text="Side Menu", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=15, height=3 )
+side_menu_label.pack()
+side_menu.grid(row=0, column=0, sticky='wn', padx=20)
 
 
 
@@ -87,24 +134,29 @@ mainheadlabel.pack()
 
 
 #Frame 1 for website information
-frame1_title=Label(frame1, text="Website Monitor", bg='#7289da')
+frame1_title=Label(frame1, text="Website Monitor", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
 
 frame1.configure(bg='#2c2f33')
 frame1_title.pack()
 
-for frame in (root, frame1, main_menu):
-    
-    frame.grid(row=0, column=0, sticky="nsew")
+init_frame();
 #menu
 my_menu=Menu(window)
 window.config(menu=my_menu)
 file_menu=Menu(my_menu)
-my_menu.add_cascade(label="View", menu=file_menu)
+file_menu2=Menu(my_menu)
+my_menu.add_cascade(label="Menu", menu=file_menu)
 file_menu.add_command(label="Website info monitor", command=lambda: show_frame(frame1))
 file_menu.add_separator()
 file_menu.add_command(label="Exit", command=window.quit)
+file_menu.add_command(label="Side Menu:", command=lambda: show_side())
 file_menu.add_command(label="Main", command=lambda: show_frame(main_menu))
 file_menu.add_command(label="Add Website", command=lambda: show_frame(root) )
+my_menu.add_cascade(label='View', menu=file_menu2)
+file_menu2.add_command(label="Exit Fullscreen", command=lambda: window.attributes('-fullscreen',False))
+file_menu2.add_command(label="Fullscreen", command=lambda: window.attributes('-fullscreen',True))
+
+
 repeat=True
 
 """root stuff"""
@@ -133,4 +185,5 @@ buttonframe.pack()
 cleartext=Button(buttonframe, text='Clear', command=clear_text, bg='#7289da', fg='#ffffff')
 cleartext.grid(row=7, column=5)
 show_frame(main_menu)
+current_frame=main_menu
 root.mainloop()
