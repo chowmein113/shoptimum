@@ -1,5 +1,8 @@
 from tkinter import *
 import sys
+import ctypes
+
+ctypes.windll.shcore.SetProcessDpiAwareness(1)
 counter=1
 
 def main():
@@ -70,9 +73,17 @@ def show_frame(frame):
     frame.grid(row=0, column=0, sticky="nsew")"""
 def init_frame():
     global List_frame
+    side_btn_per_frame=[]
+    x=0
     for frame in List_frame:
         
         frame.grid(row=0, column=0, sticky="nsew")
+        side_btn_per_frame.append(Button(frame, text="Side Menu", command=lambda: show_side(), state=NORMAL, bg='#7289da', fg='#ffffff', width=20, height= 5))
+        side_btn_per_frame[x].pack(side=LEFT, pady=0,padx=0)
+        
+        x=x+1
+        
+    
 def show_side():
     global side_menu
     global current_frame
@@ -120,11 +131,16 @@ List_frame=[root, frame1, main_menu]
 side_menu=Frame(window)
 side_State=False
 side_menu['bg']='#666666'
-window.bind('<s>', lambda: show_side())
+window.bind('<Escape>', quit)
 side_menu_label=Label(side_menu,text="Side Menu", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=15, height=3 )
 side_menu_label.pack()
-side_menu.grid(row=0, column=0, sticky='wn', padx=20)
-
+side_menu.grid(row=0, column=0, sticky='wn', padx=0)
+Main_btn=Button(side_menu, text="Main",font=('Times New Roman', 14), command=lambda: show_frame(main_menu), state=NORMAL, bg='#99aab5', fg='#ffffff', width=15, height=0)
+Main_btn.pack(padx=40, pady=15, fill=Y)
+Website_trackbtn=Button(side_menu, text="Web & Prod Track",font=('Times New Roman', 14), command=lambda: show_frame(frame1), state=NORMAL, bg='#99aab5', fg='#ffffff', width=15, height=0)
+Website_trackbtn.pack(padx=40, pady=15, fill=Y)
+Add_websitebtn=Button(side_menu, text="Add a Website",font=('Times New Roman', 14), command=lambda: show_frame(root), state=NORMAL, bg='#99aab5', fg='#ffffff', width=15, height=0)
+Add_websitebtn.pack(padx=40, pady=15, fill=Y)
 
 
 #main menu frame 
