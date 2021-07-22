@@ -119,9 +119,9 @@ window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
 window.title('Ubihard: ScalperScape')
 try:
-    window.iconbitmap("C:/Users/chowm/Desktop/scalper_repo_test/tree_of_life.ico")
+    window.iconbitmap("H:\python\python_repos\scalper_github_repositortree_of_life.ico")
 except:
-    window.iconbitmap("C:/Users/chowm/Desktop/scalper_repo_test/tree_of_life.ico")
+    pass
 
 main_menu=Frame(window)
 frame1=Frame(window)
@@ -159,12 +159,6 @@ frame1_title=Label(frame1, text="Website Monitor", bg='#7289da', fg='#ffffff', f
 frame1.configure(bg='#2c2f33')
 frame1_title.pack()
 
-
-#Frame 1 for website information
-frame1_title=Label(frame1, text="Website Monitor", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
-
-frame1.configure(bg='#2c2f33')
-frame1_title.pack()
 
 init_frame();
 #menu
