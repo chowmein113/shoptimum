@@ -147,6 +147,17 @@ Add_websitebtn.pack(padx=40, pady=15, fill=Y)
 main_menu.configure(bg='#2c2f33')
 mainheadlabel=Label(main_menu, text="Monopoly Bot", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
 mainheadlabel.pack()
+add_website=Button(main_menu, text="Add Website", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3,command= lambda: show_frame(root))
+add_website.pack(ipadx=30, ipady=20, side=TOP)
+website_monitor=Button(main_menu, text="Website Monitor", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3,command= lambda: show_frame(frame1))
+website_monitor.pack(ipadx=30, ipady=20, side=TOP)
+exit_out=Button(main_menu, text="Exit",bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3,command=window.quit )
+exit_out.pack(side=BOTTOM)
+#Frame 1 for website information
+frame1_title=Label(frame1, text="Website Monitor", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
+
+frame1.configure(bg='#2c2f33')
+frame1_title.pack()
 
 
 #Frame 1 for website information
