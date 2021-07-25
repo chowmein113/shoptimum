@@ -141,18 +141,19 @@ website_info=Frame(window)
 current_frame=startup_frame
 
 startup_frame.configure(bg='#2c2f33')
-headlabel=Label(startup_frame, text="Add Website", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
+headlabel=Label(startup_frame, text="Add Website", bg='#2c2f33', fg='#ffffff', font=('Times New Roman', 50), width=60, height=2)
 ##headlabel.grid(row=6, column=5)
 headlabel.pack()
 ##text entry init
 textentry=Text(startup_frame, width=60, height=20, font=('Courier', 16), bg='#99aab5', fg='#ffffff')
 ##textentry.grid(row=0, column=0, pady=20)
-textentry.pack(pady=15)
+textentry.pack(pady=0)
 ##message background
 #button for going to frame1
-website_info_transition=Button(startup_frame, text="Go to website monitor", command=show_frame(website_info), state=NORMAL, bg='#7289da', fg='#ffffff')
+website_info_transition=Button(startup_frame, text="Go to website monitor", command=lambda: show_frame(website_info), state=NORMAL, bg='#7289da', fg='#ffffff')
+website_info_transition.pack(pady=10)
 label = Label( startup_frame, text="Answer Box: ",  width=60, height=5, bg='#7289da', font=('Courier', 12), fg='#ffffff')
-label.pack(pady=20)
+label.pack(pady=5)
 ##repeatbutton_loop()
 repeatbutton=Button(startup_frame, text="Translate: ", command=main, state=NORMAL, bg='#7289da', fg='#ffffff')
 ##repeatbutton.grid(row=10, column=5)
