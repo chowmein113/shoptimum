@@ -78,8 +78,8 @@ def init_frame():
     for frame in List_frame:
         
         frame.grid(row=0, column=0, sticky="nsew")
-        side_btn_per_frame.append(Button(frame, text="Side Menu", command=lambda: show_side(), state=NORMAL, bg='#7289da', fg='#ffffff', width=20, height= 5))
-        side_btn_per_frame[x].pack(side=LEFT, pady=0,padx=0)
+        #side_btn_per_frame.append(Button(frame, text="Side Menu", command=lambda: show_side(), state=NORMAL, bg='#7289da', fg='#ffffff', width=20, height= 5))
+        #side_btn_per_frame[x].pack(side=LEFT, pady=0,padx=0)
         
         x=x+1
         
@@ -122,6 +122,7 @@ window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
 window.title('Ubihard: ScalperScape')
 window.bind("<Escape>",press)
+window.bind("<q>", quit)
 try:
     window.iconbitmap("H:\python\python_repos\scalper_github_repositortree_of_life.ico")
 except:
@@ -169,8 +170,7 @@ cleartext.grid(row=7, column=5)
 
 
 
-#add all frames to list ot bew init
-List_frame=[startup_frame, website_info, main_menu]
+
 
 
 """side menu"""
@@ -190,15 +190,15 @@ Add_websitebtn.pack(padx=40, pady=15, fill=Y)
 
 
 """main menu frame """
-main_menu.configure(bg='#2c2f33')
-mainheadlabel=Label(main_menu, text="Monopoly Bot", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
-mainheadlabel.pack()
-add_website=Button(main_menu, text="Add Website", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3,command= lambda: show_frame(startup_frame))
-add_website.pack(ipadx=30, ipady=20, side=TOP)
-website_monitor=Button(main_menu, text="Website Monitor", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3,command= lambda: show_frame(website_info))
-website_monitor.pack(ipadx=30, ipady=20, side=TOP)
-exit_out=Button(main_menu, text="Exit",bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3,command=window.quit )
-exit_out.pack(side=BOTTOM)
+main_menu['bg']='#2c2f33'
+headline = Label(main_menu, text="Scallibrini Bot", bg='#2c2f33', fg='#ffffff', font=('Times New Roman', 50), height=5)
+headline.pack(pady=5)
+button1 = Button(main_menu, text="Add Websites", bg='#7289da', fg='#ffffff', font=('Times New Roman', 25), width=20, command= lambda: show_frame(startup_frame))
+button1.pack(pady=5)
+button2 = Button(main_menu, text="Website Monitor", bg='#7289da', fg='#ffffff', font=('Times New Roman', 25), width=20, command=lambda: show_frame(website_info))
+button2.pack(pady=5)
+button3 = Button(main_menu, text="Exit", bg='#7289da', fg='#ffffff', font=('Times New Roman', 25), width=20,command=window.quit)
+button3.pack(pady=5)
 
 
 """website_info"""
@@ -227,7 +227,8 @@ file_menu2.add_command(label="Exit Fullscreen", command=lambda: window.attribute
 file_menu2.add_command(label="Fullscreen", command=lambda: window.attributes('-fullscreen',True))
 
 
-repeat=True
+#add all frames to list ot bew init
+List_frame=[startup_frame, website_info, main_menu]
 #CREATE AND PUSH AL FRAMES
 init_frame();
 #make main_menu visible at start
