@@ -1,6 +1,10 @@
 from tkinter import *
 import sys
 import ctypes
+from pygame import mixer
+
+
+
 #increases resolution of window 
 ctypes.windll.shcore.SetProcessDpiAwareness(1)
 counter=1
@@ -72,19 +76,22 @@ def show_frame(frame):
         frame.grid_remove()
     frame.grid(row=0, column=0, sticky="nsew")"""
 def init_frame():
+    #initialize all frames with paramters chosen
     global List_frame
     side_btn_per_frame=[]
     x=0
     for frame in List_frame:
         
         frame.grid(row=0, column=0, sticky="nsew")
-        #side_btn_per_frame.append(Button(frame, text="Side Menu", command=lambda: show_side(), state=NORMAL, bg='#7289da', fg='#ffffff', width=20, height= 5))
-        #side_btn_per_frame[x].pack(side=LEFT, pady=0,padx=0)
+        #in case we wont side button to return
+        """side_btn_per_frame.append(Button(frame, text="Side Menu", command=lambda: show_side(), state=NORMAL, bg='#7289da', fg='#ffffff', width=20, height= 5))
+        side_btn_per_frame[x].pack(side=LEFT, pady=0,padx=0)
         
-        x=x+1
+        x=x+1"""
         
     
 def show_side():
+    #bring up side menu with toggling capability
     global side_menu
     global current_frame
     global past_frame
@@ -122,13 +129,12 @@ window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
 window.title('Ubihard: ScalperScape')
 window.bind("<Escape>",press)
-window.bind("<q>", quit)
 try:
-    window.iconbitmap("H:\python\python_repos\scalper_github_repositortree_of_life.ico")
+    window.iconbitmap("H:/python/python_repos/scalper_github_repository/tree_of_life.ico")
 except:
     pass
 
-#frame init
+"""frame init"""
 startup_frame=Frame(window)
 
 main_menu=Frame(window)
@@ -137,9 +143,7 @@ website_info=Frame(window)
 
 
 """startup_frame"""
-##headlabel__init__()
 current_frame=startup_frame
-
 startup_frame.configure(bg='#2c2f33')
 headlabel=Label(startup_frame, text="Add Website", bg='#2c2f33', fg='#ffffff', font=('Times New Roman', 50), width=60, height=2)
 ##headlabel.grid(row=6, column=5)
@@ -165,13 +169,16 @@ buttonframe=Frame(startup_frame)
 buttonframe.pack()
 cleartext=Button(buttonframe, text='Clear', command=clear_text, bg='#7289da', fg='#ffffff')
 cleartext.grid(row=7, column=5)
-#root.state('zoomed')
 
 
 
 
 
 
+
+
+#add all frames to list ot bew init
+List_frame=[startup_frame, website_info, main_menu]
 
 
 """side menu"""
@@ -192,6 +199,7 @@ Add_websitebtn.pack(padx=40, pady=15, fill=Y)
 
 """main menu frame """
 main_menu['bg']='#2c2f33'
+#main_menu['bg']=PhotoImage(file='H:/python/python_repos/scalper_github_repository/python_logo.png')
 headline = Label(main_menu, text="Scallibrini Bot", bg='#2c2f33', fg='#ffffff', font=('Times New Roman', 50), height=5)
 headline.pack(pady=5)
 button1 = Button(main_menu, text="Add Websites", bg='#7289da', fg='#ffffff', font=('Times New Roman', 25), width=20, command= lambda: show_frame(startup_frame))
@@ -203,10 +211,10 @@ button3.pack(pady=5)
 
 
 """website_info"""
-frame1_title=Label(website_info, text="Website Monitor", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
+website_info_title=Label(website_info, text="Website Monitor", bg='#7289da', fg='#ffffff', font=('Times New Roman', 16), width=60, height=3)
 
 website_info.configure(bg='#2c2f33')
-frame1_title.pack()
+website_info_title.pack()
 
 
 
@@ -228,10 +236,18 @@ file_menu2.add_command(label="Exit Fullscreen", command=lambda: window.attribute
 file_menu2.add_command(label="Fullscreen", command=lambda: window.attributes('-fullscreen',True))
 
 
-#add all frames to list ot bew init
-List_frame=[startup_frame, website_info, main_menu]
+repeat=True
 #CREATE AND PUSH AL FRAMES
 init_frame();
+"""try:
+    mixer.init()
+    mixer.music.load('H:/python/python_repos/scalper_github_repository/scallibrini_theme.wav')
+    mixer.music.play()
+except:
+    pass"""
+mixer.init()
+mixer.music.load('H:/python/python_repos/scalper_github_repository/scallibrini_theme.mp3')
+mixer.music.play()
 #make main_menu visible at start
 show_frame(main_menu)
 current_frame=main_menu
