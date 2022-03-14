@@ -1,0 +1,14 @@
+{
+  "name": "electron_tester",
+  "version": "1.0.0",
+  "description": "gui for shopbot",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Kevin Chow",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "electron": "^16.0.6"
+  }
+}
