@@ -1,0 +1,150 @@
+
+    <!doctype html>
+    <html>
+    <head>
+    <title>Our Funky HTML Page</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <script type='text/javascript'>
+        
+        var value = 0
+        function addFields(){
+            // Number of inputs to create
+            var number = document.getElementById("member").value;
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("container");
+            // Clear previous contents of the container
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+            for (i=0; i<number; i++){
+                // Append a node with a random text
+                container.appendChild(document.createTextNode("Member " + (i+1)));
+                // Create an <input> element, set its type and name attributes
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "member" + i;
+                container.appendChild(input);
+                // Append a line break 
+                container.appendChild(document.createElement("br"));
+            }
+        }
+        function add_field(){
+            window.value++;
+            add_website_form.appendChild(document.createTextNode("xpath " + window.value.toString() + ": "))
+            var input = document.createElement("input");
+            input.type = "text";
+            
+            input.name = "xpath" + window.value.toString();
+            add_website_form.appendChild(input);
+            //Append a line break 
+            add_website_form.appendChild(document.createElement("br"));
+        }
+        function submither(){
+            //document.add_website_form.submit();
+            //window.location.href = "searchWindow.html";
+            var data = document.getElementById("add_website_form");
+            data_json = getFormJSON(data);
+            insertData(data_json);
+            
+
+            //$.post("http://localhost:5000/add_website", function(data , status){
+            //alert(status);
+            //});
+        }
+        function success(msg) {
+            var send = document.getElementById("header1");
+            // jk it is json //when pushing json, only receive txt vers of json need to turn into actual dictionary with parse
+            send.appendChild(document.createTextNode(msg['msg']));
+            send.appendChild(document.createElement("br"));
+        }
+        const insertData = (newData) => {
+            fetch("http://localhost:5000/add_website_JSON", {
+                method: "POST",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(newData)
+            })
+            .then(resp => resp.json())
+            .then((data) => {
+                success(data); // display response json from flask to webpage
+                console.log(data)
+            })
+            .catch(error => console.log(error))
+        }
+        /**
+        * Creates a json object including fields in the form
+        *
+        * @param {HTMLElement} form The form element to convert
+        * @return {Object} The form data
+        */
+        const getFormJSON = (form) => {
+            const data = new FormData(form);
+            return Array.from(data.keys()).reduce((result, key) => {
+              if (result[key]) {
+                result[key] = data.getAll(key)
+                return result
+              }
+              result[key] = data.get(key);
+              return result;
+            }, {});
+          };
+        
+    </script>
+    
+    
+    </head>
+    <body>
+        <button id="back" type="button" className='front', onClick="location.href='mainWindow.html'">Back</button>
+        <h1 id='header1'></h1>
+        <form name= "add_website_form" id= "add_website_form" action = "http://localhost:5000/add_website" method = "POST">
+            <p>Enter Name:</p>
+            
+            <p><input type = "submit" value = "submit" href="searchWindow.html", id="submit_og"/></p>
+            
+            
+            <button type="button" id="submit++" className="front" onClick="submither()">
+                submit++
+              </button>
+            <div id="cont"/> 
+            <p> webname: <input type = "text" name = "webname" id='webname' /></p>
+            <p> web url: <input type = "text" name = "web_url" id='web_url'/></p>
+            <button type="button" className="front" onClick="add_field()">
+                Add Xpath
+              </button>
+              <br/>
+              <div id="container"/>
+              <br/>
+            
+            
+            
+            
+         </form> 
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script> 
+        //$(document).ready(function() {
+        //    $("").click(function() {        
+        //        // Submit the form
+        //        console.log("click button worked");
+        //        $('#add_website_form').submit();
+        //        $.post("http://localhost:5000/add_website_JSON", $('#add_website_form').serializeJSON(), function(response) {
+        //            $("poop_return").text(respose);
+        //        });
+        //    });
+        //});
+        //$("").click(function() {
+        //    console.log("doomed");
+        //    $.post("http://localhost:5000/add_website_JSON", $('#add_website_form').serializeJSON(), function(response) {
+        //        $("poop_return").text(respose);
+        //    });
+        //
+        //    
+        //});
+
+        
+
+    </script>
+
+    </html>
