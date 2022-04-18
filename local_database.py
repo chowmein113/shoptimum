@@ -216,7 +216,7 @@ class local_database():
             with open(json_file, 'a') as f:
                 
                 json.dump(i.to_json_dict(), f, indent = 4)
-                print(",\n", end = '', file = f)
+                print("},\n", end = '', file = f)
         with open(json_file, 'a') as f:
             #0 is first of char in doc, 2 is end of document
             f.seek(0, 2)
