@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+body {
+  margin: auto;
+  font-family: 'Rubik';
+  background: #1e2124;
+  font-size: 18px;
+  height: 100vp;
+  max-width: 120rem;
+  padding: 2rem;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  height: 100vh;
+  max-width: 200vh;
+  -ms-grid-rows: 0.2fr 1fr;
+      grid-template-rows: 0.2fr 1fr;
+}
+
+.header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 0.1fr 0.2fr 0.4fr;
+      grid-template-rows: 0.1fr 0.2fr 0.4fr;
+  row-gap: 10px;
+  background: -moz-repeating-linear-gradient(lime, blue);
+}
+
+.header .logo {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.2fr 1fr;
+      grid-template-columns: 0.2fr 1fr;
+}
+
+.header .tool-bar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.header .legend {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+      grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+}
+
+.header h1 {
+  text-align: left;
+  padding-left: 1em;
+}
+
+.products {
+  background: #282b30;
+  display: -ms-grid;
+  display: grid;
+  row-gap: 10px;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.products .individual-product {
+  background-color: #040f0c;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+      grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+}
+
+.products .individual-product .product-img {
+  background-color: #fffef0;
+}
+
+.products .individual-product .product-name {
+  background-color: #ce104f;
+}
+
+.products .individual-product .price {
+  background-color: #6200ff;
+}
+
+.products .individual-product .rating {
+  background-color: #AAAA;
+}
+
+.products .individual-product .num-of-reviews {
+  background-color: #A0CD;
+}
+
+.products .individual-product .link-to-product {
+  background-color: #B838;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+body {
+  margin: auto;
+  font-family: 'Rubik';
+  background: #1e2124;
+  font-size: 18px;
+  height: 100vp;
+  max-width: 120rem;
+  padding: 2rem;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+  height: 100vh;
+  max-width: 200vh;
+  grid-template-rows: 0.2fr 1fr;
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 0.1fr 0.2fr 0.4fr;
+  row-gap: 10px;
+
+  .logo {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+  }
+
+  .tool-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+  }
+  
+  h1 {
+    text-align: left;
+    padding-left: 1em;
+  }
+
+  background: -moz-repeating-linear-gradient(rgb(0,255,0), rgb(0,0,255));
+}
+
+.products {
+  background: #282b30;
+  display: grid;
+  row-gap: 10px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+
+  .individual-product {
+    background-color: rgb(4, 15, 12);
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+    column-gap: 10px;
+    
+    .product-img {
+      background-color: rgb(255, 254, 240);
+    }
+
+    .product-name {
+      background-color: rgb(206, 16, 79);
+    }
+
+    .price {
+      background-color: rgb(98, 0, 255);
+    }
+
+    .rating {
+      background-color: #AAAA;
+    }
+
+    .num-of-reviews {
+      background-color: #A0CD;
+    }
+
+    .link-to-product {
+      background-color: #B838;
+    }
+  }
+}
